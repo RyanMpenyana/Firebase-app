@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1053344134761",
+    "project_id": "camps-bay-9918c",
+    "storage_bucket": "camps-bay-9918c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053344134761:android:eee4a630bc04dd2a98d4f8",
+        "android_client_info": {
+          "package_name": "com.fortenight.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1053344134761-6h2etbuehf841453i4e8gu5dav5lub0l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fortenight.firebase",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1053344134761-ium5bhf0k50kgjkcrrpt32frciu23g2j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-4Yf1ivp_jlQuZt9FW9L8Q5isKNhqnTg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1053344134761-ium5bhf0k50kgjkcrrpt32frciu23g2j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1053344134761-11j948ma41q8a0qfjakifrdkbus4vf7l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fortenight.firebase"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
