@@ -1,9 +1,15 @@
-import { StyleSheet, View } from 'react-native';
-
+import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}></View>
+    <SafeAreaView style={styles.container}>
+      <View>
+        <Text style={{ fontSize: 24, color: "white" }}>
+          You are logged in
+        </Text>
+      </View>
+    </SafeAreaView>
   );
 }
 

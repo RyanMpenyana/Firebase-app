@@ -1,5 +1,5 @@
 import auth from "@react-native-firebase/app";
-import { createUserWithEmailAndPassword, getAuth } from "@react-native-firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "@react-native-firebase/auth";
 import { Image } from "expo-image";
 import { useLocalSearchParams } from "expo-router";
 import React, { useState } from 'react';
@@ -20,7 +20,9 @@ function SignUp() {
 
   const handleSignUp = async () => {
     createUserWithEmailAndPassword(getAuth(), email, password)
-      .then(() => {
+      .then((userCred) => {
+        const cred = userCred.user
+        console.log(cred)
         console.log('User account created & signed in!');
       })
       .catch(error => {
@@ -38,6 +40,13 @@ function SignUp() {
     setEmail("")
     setPassword("")
   }
+  const handleLogin = () => {
+    signInWithEmailAndPassword(getAuth(), email, password).then(() => {
+      alert("You are logged In")
+    })
+  }
+
+
 
 
   return (
@@ -47,18 +56,18 @@ function SignUp() {
           requestParams.login ?
             <View style={style.container}>
               <View style={{ gap: 16 }}>
-                <Text style={{ fontSize: 32, color: "white" }}>Sign In using your email and password</Text>
+                <Text style={{ fontSize: 32, color: "white" }}>Log In using your email and password</Text>
                 <View style={{ gap: 12 }}>
                   <View style={{ gap: 8 }}>
                     <Text style={{ fontSize: 20, color: "white" }}>Email</Text>
-                    <TextInput placeholderTextColor={"#2d2d2dff"} value={email} style={style.input} keyboardType='email-address' placeholder='Enter your email.'></TextInput>
+                    <TextInput placeholderTextColor={"#2d2d2dff"} value={email} onChange={(e) => e.nativeEvent.text} style={style.input} keyboardType='email-address' placeholder='Enter your email.'></TextInput>
                   </View>
                   <View style={{ gap: 8 }}>
                     <Text style={{ fontSize: 20, color: "white" }}>Password</Text>
-                    <TextInput placeholderTextColor={"#2d2d2dff"} value={password} style={style.input} placeholder='Enter your password.'></TextInput>
+                    <TextInput placeholderTextColor={"#2d2d2dff"} value={password} onChange={(e) => e.nativeEvent.text} style={style.input} placeholder='Enter your password.'></TextInput>
                   </View>
                 </View>
-                <Pressable onPress={() => handleSignUp()} style={{ backgroundColor: "#2E038C", justifyContent: "center", paddingVertical: 12, borderRadius: 8 }}>
+                <Pressable onPress={() => handleLogin()} style={{ backgroundColor: "#2E038C", justifyContent: "center", paddingVertical: 12, borderRadius: 8 }}>
                   <Text style={{ textAlign: "center", color: "white", fontSize: 20 }}>Sign In</Text>
                 </Pressable>
               </View>
@@ -138,3 +147,7 @@ const style = StyleSheet.create({
     justifyContent: "center"
   }
 })
+
+function firestore() {
+  throw new Error("Function not implemented.");
+}
