@@ -10,30 +10,25 @@ export const unstable_settings = {
   anchor: '(tabs)',
 };
 
+export const FirebaseFirestore = firestore()
+
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null)
   const [initializing, setInitializing] = useState(true)
-  const docRef = firestore().doc('users/nbuvuuUl1AfYkff2pIQK');
 
-  const displayData = async () => {
-    const docSnap = await docRef.get();
+  const users = FirebaseFirestore.collection("users");
 
-    if (docSnap) {
-      console.log('User data:', docSnap.data());
-    } else {
-      console.log('No such user.');
-    }
-
+  const getUsers = async () => {
+    const docSnap = (await users.get()).docs;
+    console.log(docSnap)
   }
 
   useEffect(() => {
-    displayData()
     const subscriber = onAuthStateChanged(getAuth(), (user) => {
       setUser(user)
       if (initializing) setInitializing(false)
     })
-    console.log("user:", user)
     return subscriber
   }, [])
 
